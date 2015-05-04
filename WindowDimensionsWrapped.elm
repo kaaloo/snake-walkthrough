@@ -1,3 +1,5 @@
+module WindowDimensionsWrapped where
+
 import Graphics.Element exposing (..)
 import Signal exposing (..)
 import Window

@@ -1,3 +1,5 @@
+module ArrowsSpacesMerged where
+
 import Graphics.Element exposing (..)
 import Keyboard
 import Signal exposing (..)

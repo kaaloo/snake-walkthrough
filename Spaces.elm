@@ -1,6 +1,8 @@
+module Spaces where
+
 import Graphics.Element exposing (..)
+import Keyboard
 import Signal exposing (..)
-import Window
 
 main : Signal Element
-main = map show Window.dimensions
+main = map show Keyboard.space

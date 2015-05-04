@@ -1,6 +1,8 @@
+module WindowDimensions where
+
 import Graphics.Element exposing (..)
-import Keyboard
 import Signal exposing (..)
+import Window
 
 main : Signal Element
-main = map show Keyboard.arrows
+main = map show Window.dimensions

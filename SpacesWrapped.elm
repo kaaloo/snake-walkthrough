@@ -1,3 +1,5 @@
+module SpacesWrapped where
+
 import Graphics.Element exposing (..)
 import Keyboard
 import Signal exposing (..)
