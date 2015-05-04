@@ -7,4 +7,5 @@ type UserInput = Space Bool
 spaces : Signal UserInput
 spaces = map (\pressed -> Space pressed) Keyboard.space
 
+main : Signal Element
 main = map show spaces

@@ -13,4 +13,5 @@ spaces = map (\pressed -> Space pressed) Keyboard.space
 input : Signal UserInput
 input = merge arrows spaces
 
+main : Signal Element
 main = map show input
