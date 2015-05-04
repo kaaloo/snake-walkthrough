@@ -2,9 +2,9 @@ import Graphics.Element exposing (..)
 import Keyboard
 import Signal exposing (..)
 
-type UserInput = Space Bool
+type Event = Space Bool
 
-spaces : Signal UserInput
+spaces : Signal Event
 spaces = map (\pressed -> Space pressed) Keyboard.space
 
 main : Signal Element

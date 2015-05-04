@@ -2,15 +2,15 @@ import Graphics.Element exposing (..)
 import Keyboard
 import Signal exposing (..)
 
-type UserInput = Arrow {x:Int, y:Int} | Space Bool
+type Event = Arrow {x:Int, y:Int} | Space Bool
 
-arrows : Signal UserInput
+arrows : Signal Event
 arrows = Arrow <~ Keyboard.arrows
 
-spaces : Signal UserInput
+spaces : Signal Event
 spaces = map (\pressed -> Space pressed) Keyboard.space
 
-input : Signal UserInput
+input : Signal Event
 input = merge arrows spaces
 
 main : Signal Element

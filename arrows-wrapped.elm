@@ -2,9 +2,9 @@ import Graphics.Element exposing (..)
 import Keyboard
 import Signal exposing (..)
 
-type UserInput = Arrow {x:Int, y:Int}
+type Event = Arrow {x:Int, y:Int}
 
-arrows : Signal UserInput
+arrows : Signal Event
 arrows = Arrow <~ Keyboard.arrows
 
 main : Signal Element
