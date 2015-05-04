@@ -3,7 +3,7 @@ import Keyboard
 import Signal exposing (..)
 import Window
 
-type Event = Arrow
+type Action = Arrow
                { x:Int
                , y:Int
                }
@@ -13,19 +13,19 @@ type Event = Arrow
                }
            | Space Bool
 
-arrows : Signal Event
+arrows : Signal Action
 arrows = Arrow <~ Keyboard.arrows
 
-spaces : Signal Event
+spaces : Signal Action
 spaces = Space <~ Keyboard.space
 
-dim2ws : (Int, Int) -> Event
+dim2ws : (Int, Int) -> Action
 dim2ws (w, h) = WindowSize {width = w, height = h}
 
-windowSize : Signal Event
+windowSize : Signal Action
 windowSize = map dim2ws Window.dimensions
 
-input : Signal Event
+input : Signal Action
 input = mergeMany [arrows, spaces, windowSize]
 
 main : Signal Element

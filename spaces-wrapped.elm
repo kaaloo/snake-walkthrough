@@ -2,9 +2,9 @@ import Graphics.Element exposing (..)
 import Keyboard
 import Signal exposing (..)
 
-type Event = Space Bool
+type Action = Space Bool
 
-spaces : Signal Event
+spaces : Signal Action
 spaces = Space <~ Keyboard.space
 
 main : Signal Element

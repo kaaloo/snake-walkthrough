@@ -2,12 +2,12 @@ import Graphics.Element exposing (..)
 import Signal exposing (..)
 import Window
 
-type Event = WindowSize {width: Int, height: Int}
+type Action = WindowSize {width: Int, height: Int}
 
-dim2ws : (Int, Int) -> Event
+dim2ws : (Int, Int) -> Action
 dim2ws (w, h) = WindowSize {width = w, height = h}
 
-windowSize : Signal Event
+windowSize : Signal Action
 windowSize = map dim2ws Window.dimensions
 
 main : Signal Element
