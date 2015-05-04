@@ -5,7 +5,7 @@ import Signal exposing (..)
 type Event = Space Bool
 
 spaces : Signal Event
-spaces = map (\pressed -> Space pressed) Keyboard.space
+spaces = Space <~ Keyboard.space
 
 main : Signal Element
 main = map show spaces
