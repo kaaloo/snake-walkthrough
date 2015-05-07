@@ -1,4 +1,4 @@
-module WindowDimensions where
+module WindowSize where
 
 import Graphics.Element exposing (..)
 import Signal exposing (..)
