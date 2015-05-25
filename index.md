@@ -2,6 +2,12 @@
 
 ---
 
+## First, things first
+
+(Hello world...) <!-- .element: class="fragment" data-fragment-index="1" -->
+
+----
+
 ## Hello World
 
     import Graphics.Element exposing (..)
@@ -10,9 +16,13 @@
     main =
       show "Hello, World!"
 
-[HelloWorld.elm](HelloWorld.elm)
+[Try it live!](http://localhost:8000/HelloWorld.elm) <!-- .element: target="_blank" -->
 
-Weird, why the double quotes ? Let's try to get rid of them...
+----
+
+## What's up with the quotes ?
+
+![WTF](images/wtf-cat-meme.jpg)
 
 ----
 
@@ -25,13 +35,15 @@ Weird, why the double quotes ? Let's try to get rid of them...
     main =
       leftAligned (Text.monospace (Text.fromString "Hello World!"))
 
-WTF? Let's delve into this issue a bit as it's also a way to take a quick look at types.
+[Try it live!](http://localhost:8000/ImprovedHelloWorld.elm) <!-- .element: target="_blank" -->
+
+Let's delve into this issue a bit as it's also a way to take a quick look at types.
 
 ----
 
-### The Hello World Conundrum
+### Elm is statically typed
 
-Let's look at `show`, it's defined in [`Graphics.Element`](http://package.elm-lang.org/packages/elm-lang/core/2.0.1/Graphics-Element) and it's type signature is:
+Let's look at `show`, it's defined in [`Graphics.Element`](http://package.elm-lang.org/packages/elm-lang/core/2.0.1/Graphics-Element) <!-- .element: target="_blank" --> and it's type signature is:
 
     show : a -> Element
 
@@ -46,15 +58,15 @@ this looks almost like our improved Hello World except since the input to show c
 
 ## Simple Signals For Snake
 
----
+----
 
 ### Wait What Are We Trying To Build?
 
 Let's take a look at the final result.
 
-[Snake.elm](Snake.elm)
+[Snake](http://localhost:8000/Snake.elm) <!-- .element: target="_blank" -->
 
----
+----
 
 ### So What Are Signals?
 
@@ -74,7 +86,7 @@ Looking closer at what is going on with the space bar...
 
 ![SpaceSignals](images/SpaceSignals.png)
 
-[Let's try it!](http://localhost:8000/Spaces.elm)
+[Let's try it!](http://localhost:8000/Spaces.elm) <!-- .element: target="_blank" -->
 
 ----
 
@@ -104,7 +116,7 @@ We'll need these to move the snake around
     main : Signal Element
     main = map show Keyboard.arrows
 
-[Let's try it!](http://localhost:8000/Arrows.elm)
+[Let's try it!](http://localhost:8000/Arrows.elm) <!-- .element: target="_blank" -->
 
 ----
 
@@ -119,4 +131,4 @@ Since we want to center our display, we'll need to know the window dimensions.
     main : Signal Element
     main = map show Window.dimensions
 
-[Let's try it!](http://localhost:8000/WindowSize.elm)
+[Let's try it!](http://localhost:8000/WindowSize.elm) <!-- .element: target="_blank" -->
