@@ -1,4 +1,7 @@
-# Introduction to FRP
+# Functional Reactive Programming in ELM
+![ELM](images/elm-logo.png)
+
+#### A very gentle introduction <!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 
@@ -132,3 +135,48 @@ Since we want to center our display, we'll need to know the window dimensions.
     main = map show Window.dimensions
 
 [Let's try it!](http://localhost:8000/WindowSize.elm) <!-- .element: target="_blank" -->
+
+---
+
+## Wrapping up signals
+
+----
+
+### The ELM architecture
+
+    -- MODEL
+
+    type alias Model = { ... }
+
+    -- UPDATE
+
+    type Action = Reset | ...
+
+    update : Action -> Model -> Model
+    update action model =
+      case action of ...
+
+    -- VIEW
+
+    view : Model -> Html
+    view = ...
+
+----
+
+### Wrapping up spaces
+
+We want hitting the space bar to be one of the actions in our game.
+
+    import Graphics.Element exposing (..)
+    import Keyboard
+    import Signal exposing (..)
+
+    type Action = Space Bool
+
+    spaces : Signal Action
+    spaces = Space <~ Keyboard.space
+
+    main : Signal Element
+    main = map show spaces
+
+[Let's try it!](http://localhost:8000/SpacesWrapped.elm) <!-- .element: target="_blank" -->
