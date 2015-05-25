@@ -142,6 +142,52 @@ Since we want to center our display, we'll need to know the window dimensions.
 
 ----
 
+### Wrapping up spaces
+
+We want hitting the space bar to be one of the actions in our game.
+
+    import Graphics.Element exposing (..)
+    import Keyboard
+    import Signal exposing (..)
+
+    type Action = Space Bool
+
+    spaces : Signal Action
+    spaces = Space <~ Keyboard.space
+
+    main : Signal Element
+    main = map show spaces
+
+[Let's try it!](http://localhost:8000/SpacesWrapped.elm) <!-- .element: target="_blank" -->
+
+----
+
+### Wrapping up arrows
+
+Same thing for the arrows on the keyboard.
+
+    import Graphics.Element exposing (..)
+    import Keyboard
+    import Signal exposing (..)
+
+    type Action = Arrow {x:Int, y:Int}
+
+    arrows : Signal Action
+    arrows = Arrow <~ Keyboard.arrows
+
+    main : Signal Element
+    main = map show arrows
+
+[Let's try it!](http://localhost:8000/ArrowsWrapped.elm) <!-- .element: target="_blank" -->
+
+---
+
+## Now let's dive into the nitty gritty
+
+![Diving](images/Big_Blue_Diving.jpg)
+
+----
+
 ### The ELM architecture
 
     -- MODEL
@@ -163,20 +209,37 @@ Since we want to center our display, we'll need to know the window dimensions.
 
 ----
 
-### Wrapping up spaces
+## The Model
 
-We want hitting the space bar to be one of the actions in our game.
+Here we define some types to help model the "Snake" domain.
 
-    import Graphics.Element exposing (..)
-    import Keyboard
-    import Signal exposing (..)
+    type Direction = Up | Down | Left | Right
 
-    type Action = Space Bool
+    type alias Snake =
+      { segments: List(Float, Float)
+      , direction:Direction
+      }
 
-    spaces : Signal Action
-    spaces = Space <~ Keyboard.space
+    type alias Cherry = Maybe (Float, Float)
 
-    main : Signal Element
-    main = map show spaces
+    type Model = NotStarted | Started (Snake, Cherry, Seed)
 
-[Let's try it!](http://localhost:8000/SpacesWrapped.elm) <!-- .element: target="_blank" -->
+----
+
+## And also some useful constants
+
+    segmentDim = 15.0
+    cherryRadius = 7.5
+    initSeed = Random.initialSeed 42
+
+    defaultSnake : Snake
+    defaultSnake =
+        { segments =
+            [0.0..8.0]
+            |> map (\n -> (n*segmentDim, 0))
+            |> reverse
+        , direction = Right
+        }
+
+    initialModel : Model
+    initialModel = NotStarted
