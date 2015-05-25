@@ -64,6 +64,59 @@ Moreover, WTF is FRP?
 
 ----
 
-So for instance in our game, at a very high level... 
+So for instance in our game, at a very high level...
 
 ![Signals](images/Signals.png)
+
+----
+
+Looking closer at what is going on with the space bar...
+
+![SpaceSignals](images/SpaceSignals.png)
+
+[Let's try it!](http://localhost:8000/Spaces.elm)
+
+----
+
+And in code
+
+    import Graphics.Element exposing (..)
+    import Keyboard
+    import Signal exposing (..)
+
+    main : Signal Element
+    main = map show Keyboard.space
+
+---
+
+## Let's look at more signals
+
+----
+
+### Keyboard arrows
+
+We'll need these to move the snake around
+
+    import Graphics.Element exposing (..)
+    import Keyboard
+    import Signal exposing (..)
+
+    main : Signal Element
+    main = map show Keyboard.arrows
+
+[Let's try it!](http://localhost:8000/Arrows.elm)
+
+----
+
+### Windows size
+
+Since we want to center our display, we'll need to know the window dimensions.
+
+    import Graphics.Element exposing (..)
+    import Signal exposing (..)
+    import Window
+
+    main : Signal Element
+    main = map show Window.dimensions
+
+[Let's try it!](http://localhost:8000/WindowSize.elm)
